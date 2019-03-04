@@ -1,6 +1,6 @@
 def active_mode(len)
 	puts "====== Active communication mode ======"
-	puts " Default Cipher : RSA 2048 + AES 256 CBC"
+	puts " Default Cipher : RSA 2048 + AES 256 CTR"
 	puts
 	puts "Please copy ALL the content underneath and send it to a passive mode user"
 	puts "Press <Enter> to Continue"
@@ -25,7 +25,7 @@ def active_mode(len)
 	key = key[0..31]
 	puts Base64.encode64(key)
 	puts Base64.encode64(iv)
-	cipher = OpenSSL::Cipher::AES.new("256-CBC")
+	cipher = OpenSSL::Cipher::AES.new("256-CTR")
 	cipher.encrypt
 	cipher.key = key
 	cipher.iv = iv

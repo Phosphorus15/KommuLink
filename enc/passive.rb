@@ -2,7 +2,7 @@ require './enc/commons.rb'
 
 def passive_mode(len)
 	puts "====== Passive communication mode ======"
-	puts " Default Cipher : RSA 2048 + AES 256 CBC"
+	puts " Default Cipher : RSA 2048 + AES 256 CTR"
 	puts
 	puts "Please paste the content received from active user : "
 	line = ""
@@ -17,7 +17,7 @@ def passive_mode(len)
 	puts
 	puts "Public Key Confirmed"
 	puts
-	cipher = OpenSSL::Cipher::AES.new("256-CBC")
+	cipher = OpenSSL::Cipher::AES.new("256-CTR")
 	key = cipher.random_key
 	iv = cipher.random_iv
 	puts Base64.encode64(key)
